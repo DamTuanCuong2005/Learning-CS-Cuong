@@ -4,7 +4,7 @@ func validateSKU(_ sku: String?){
         print( "Chưa nhập mã sản phẩm")
         return
     }
-    guard sku.isEmpty == false else {
+    guard !sku.isEmpty else {
         print("Rỗng")
         return
     }
@@ -15,3 +15,4 @@ func validateSKU(_ sku: String?){
         print("SKU hợp lệ:\(sku)")
     }
 print(validateSKU("SKU-12345"))
+
