@@ -1,11 +1,12 @@
 import Foundation
-func Password(_ password:Int){
-    while password == 3{
+func Password(_ password:String){
+    while password.count == 3{
+        print("Đã đăng nhập thành công")
         break
     }
-    while password < 3{
+    while password.count < 3{
         print("Password tối đa là 3")
-        break
+        continue
     }
 }
-Password(0)
+Password("haa")

@@ -5,7 +5,7 @@ func totalPrice(of prices: [Double], taxRate: Double = 0.1, discount: Double = 0
     var sale:Double = 0
     for price in prices{
         total += Double(price)
-        sale = total*taxRate-discount
+        sale = (total*taxRate)-discount
     }
     return total + sale
 }
