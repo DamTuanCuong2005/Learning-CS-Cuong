@@ -2,6 +2,7 @@ import Foundation
 //Bai1
 let scores =  [8, 9, 10, 7, 6]
 func average(of scores: [Int])-> Double{
+    guard !scores.isEmpty else { return 0 }
     var total:Double = 0
     for score in scores{
         total += Double(score)
@@ -10,17 +11,23 @@ func average(of scores: [Int])-> Double{
 }
 print("average:\(average(of: scores))")
 func maxScore(in scores: [Int]) -> Int?{
-    var MaxNumber = 0
+    guard !scores.isEmpty else{
+        return nil
+    }
+    var Maxnumber = scores[0]
     for score in scores {
-        if MaxNumber < score{
-            MaxNumber = score
+        if Maxnumber < score{
+            Maxnumber = score
         }
     }
-    return MaxNumber
+    return Maxnumber
 }
 print("max: \(maxScore(in: scores) ?? 0)")
 func minScore(in scores: [Int]) -> Int?{
-    var MinNumber = 10
+    guard !scores.isEmpty else{
+        return nil
+    }
+    var MinNumber = scores[0]
     for score in scores {
         if score < MinNumber{
             MinNumber = score
@@ -29,28 +36,23 @@ func minScore(in scores: [Int]) -> Int?{
     return MinNumber
 }
 print("min: \(minScore(in: scores) ?? 0)")
-func grade(for average: Double) -> Int{
+func grade(for average: Double) -> String{
     var Average = average
-        while Average == 10 && Average >= 8.5{
+        if Average == 10 && Average >= 8.5{
             print("Grade: A")
-            break
         }
-        while Average >= 7 && Average <= 8.4 {
+        if Average >= 7 && Average <= 8.4 {
             print("Grade: B")
-            break
         }
-        while Average >= 5.5 && Average <= 6.9{
+        if Average >= 5.5 && Average <= 6.9{
             print("Grade: C")
-            break
         }
-        while Average >= 4 && Average <= 5.4{
+        if Average >= 4 && Average <= 5.4{
             print("Grade: D")
-            break
         }
-        while Average < 4 {
+        if Average < 4 {
             print("Grade: F")
-            break
         }
-    return Int(Average)
+    return String("\(average)")
 }
 grade(for: average(of: scores))

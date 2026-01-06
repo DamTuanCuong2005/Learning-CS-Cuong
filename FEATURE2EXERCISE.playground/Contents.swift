@@ -2,19 +2,19 @@ import Foundation
 let comments = ["Hello","","This is stupid","nice"]
 let banned = ["stupid","Hate"]
 func filterEmpty(_ comments: [String]) -> [String]{
-    var Empty = [String]([])
+    var result:[String] = []
     for Comment in comments {
-        if Comment.isEmpty{
-            continue
+        if !Comment.isEmpty{
+            result.append(Comment)
         }
-        Empty += [Comment]
     }
-    return [String](Empty)
+    return result
 }
 print(filterEmpty(comments))
 func containsBannedWord(_ comment: String, banned: [String]) -> Bool{
+    var c = comment.lowercased()
     for ban in banned {
-        if comment.lowercased().contains(ban.lowercased()){
+        if c.contains(ban.lowercased()){
             return true
         }
     }
@@ -23,7 +23,7 @@ func containsBannedWord(_ comment: String, banned: [String]) -> Bool{
 func moderate(_ comments: [String], banned: [String]) -> [String]{
     containsBannedWord("\(comments)", banned: banned)
     filterEmpty(comments)
-    var mode = [String]([])
+    var mode:[String] = []
     for comment in comments {
         if containsBannedWord("\(comment)", banned: banned){
             mode.append("[REMOVE]")
