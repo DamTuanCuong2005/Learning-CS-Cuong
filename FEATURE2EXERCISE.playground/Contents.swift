@@ -21,7 +21,6 @@ func containsBannedWord(_ comment: String, banned: [String]) -> Bool{
     return false
 }
 func moderate(_ comments: [String], banned: [String]) -> [String]{
-    containsBannedWord("\(comments)", banned: banned)
     filterEmpty(comments)
     var mode:[String] = []
     for comment in comments {
