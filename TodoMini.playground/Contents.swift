@@ -13,7 +13,7 @@ class TodoManager{
             print("Rỗng")
             return
         }
-        var newTodo = Todo(id: newId, title: title, isComplete: true)
+        var newTodo = Todo(id: newId, title: title, isComplete: false)
         ArrayTodo.append(newTodo)
         newId += 1
     }
@@ -31,16 +31,17 @@ class TodoManager{
     func countCompletedTodos() -> Int{
         var done:Int = 0
         for s in ArrayTodo{
-            done = ArrayTodo.count
+            if s.isComplete{
+                done += 1
+            }
         }
         return done
     }
     func printTodos(){
         for s in ArrayTodo{
-            guard s.isComplete == true else{
-                return
+            if s.isComplete{
+                print("\(s.id)-\(s.title)")
             }
-            print("\(s.id)-\(s.title)")
         }
     }
 }
@@ -48,7 +49,7 @@ let manager = TodoManager()
 manager.addTodo(title: "Eat")
 manager.addTodo(title: "Watch Tiktok")
 manager.addTodo(title: "coding")
-manager.toggleTodo(id: 2,newIsComplete: false)
+manager.toggleTodo(id: 2,newIsComplete: true)
 manager.removeTodo(id: 2)
 manager.countCompletedTodos()
 manager.printTodos()
