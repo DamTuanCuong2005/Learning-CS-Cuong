@@ -35,7 +35,7 @@ class StudentManager{
         for student in ArrayStudent {
             sum += student.score
         }
-        return sum
+        return sum / Double(ArrayStudent.count)
     }
     func updateScore(id: Int,newScore: Double){
         guard (0...10).contains(newScore) else{
